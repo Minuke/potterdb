@@ -1,0 +1,51 @@
+:host {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 15px;
+}
+
+.custom-input-group {
+  display: flex;
+	width: 50%;
+  align-items: center;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.custom-btn {
+  background-color: #2c3e50;;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+.custom-input {
+  border: none;
+  box-shadow: none;
+}
+
+.custom-input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.custom-input::placeholder {
+  color: #6c757d;
+}
+
+.custom-input-group .custom-input {
+  padding-left: 10px;
+}
+
+.custom-input-group .custom-btn {
+  padding-left: 15px;
+  padding-right: 15px;
+}

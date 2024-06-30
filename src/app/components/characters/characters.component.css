@@ -34,7 +34,7 @@
 
 .character-info {
   padding: 10px;
-  height: 150px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,6 +43,9 @@
 .character-name {
   font-size: 1.2rem;
   margin-bottom: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .character-house {
