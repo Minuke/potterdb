@@ -19,6 +19,7 @@ export class CharactersComponent implements OnInit {
   ngOnInit() {
     this.potterdbService.characters$.subscribe(characters => {
       this.characters = characters;
+      console.log(this.characters);
     });
   }
 }

@@ -19,7 +19,7 @@ export class SearchBoxComponent implements OnInit {
   public potterdbService = inject(PotterdbService);
 
   ngOnInit() {
-    this.searchCharacters('');
+    this.searchCharacters(''); 
     this.searchSubject.pipe(
       debounceTime(500)
     ).subscribe(searchValue => {
@@ -33,9 +33,11 @@ export class SearchBoxComponent implements OnInit {
   }
 
   private searchCharacters(searchValue: string) {
-    this.potterdbService.searchCharacters(searchValue).subscribe(
+    const limit = searchValue ? 10 : null; // Si hay texto de búsqueda, limita los resultados a 10
+    this.potterdbService.searchCharacters(searchValue, limit).subscribe(
       (response: CharactersResponse) => {
-        this.potterdbService.updateCharacters(response.data);
+        const characters = limit ? response.data.slice(0, limit) : response.data;
+        this.potterdbService.updateCharacters(characters);
       }
     );
   }
