@@ -11,7 +11,7 @@ export class PotterdbService {
   private readonly http = inject(HttpClient);
   private charactersSubject = new BehaviorSubject<Character[]>([]);
   characters$ = this.charactersSubject.asObservable();
-  private readonly baseUrl: string = "https://api.potterdb.com/v1/characters";
+  public baseUrl: string = "https://api.potterdb.com/v1/characters";
 
   searchCharacters(name: string, limit: number | null = 10): Observable<CharactersResponse> {
     let url = this.baseUrl;
