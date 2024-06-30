@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Attribute, Component, inject } from '@angular/core';
-import { PotterdbService } from '../../services/potterdb.service';
-import { Observable, Subject, takeUntil } from 'rxjs';
-import { Attributes, Character, CharactersResponse } from '../../interfaces/character.interface';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PotterdbService } from '../../services/potterdb.service';
+import { Character } from '../../interfaces/character.interface';
 import { DefaultImagePipe } from '../../pipes/default-image.pipe';
 
 @Component({
@@ -11,29 +9,16 @@ import { DefaultImagePipe } from '../../pipes/default-image.pipe';
   standalone: true,
   imports: [CommonModule, DefaultImagePipe],
   templateUrl: './characters.component.html',
-  styleUrl: './characters.component.css'
+  styleUrls: ['./characters.component.css']
 })
-export class CharactersComponent {
-
+export class CharactersComponent implements OnInit {
+  
+  characters: Character[] = [];
   public potterdbService = inject(PotterdbService);
-  public unsubscribe$ = new Subject<void>();
-  public characters$!: Character[];
 
-
-  ngOnInit():void {
-    this.getCharacters();
-  }
-
-  getCharacters(): void {
-    this.potterdbService.getCharacters()
-    .pipe(takeUntil(this.unsubscribe$))
-    .subscribe((response: CharactersResponse) => {
-        this.characters$ = response.data;
+  ngOnInit() {
+    this.potterdbService.characters$.subscribe(characters => {
+      this.characters = characters;
     });
-  }
-
-  ngOnDestroy():void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 }

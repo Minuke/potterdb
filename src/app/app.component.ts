@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { IntroComponent } from './components/intro/intro.component';
-import { CharactersComponent } from './components/characters/characters.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { CharactersComponent } from './components/characters/characters.component';
 
 @Component({
   selector: 'app-root',
